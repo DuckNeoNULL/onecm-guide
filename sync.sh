@@ -9,5 +9,6 @@ rsync -a --delete "$src/images/" "$dst/images/"
 
 cd "$dst"
 git add -A
+git diff --cached --quiet && { echo "guide unchanged"; exit 0; }
 git commit -m "docs: update staff guide $(date +%F)"
 git push
