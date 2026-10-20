@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
-# Run after any staff-guide UI change: re-copy docs/html-guide here and push the Pages deploy.
+# Publish the staff guide to GitHub Pages.
+# This folder IS the source of truth: edit index.html and images/ here, then run this script.
 set -euo pipefail
-src="$(cd "$(dirname "${BASH_SOURCE[0]}")/../docs/html-guide" && pwd)"
 dst="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-cp -f "$src/onecm-staff-guide.html" "$dst/index.html"
-rsync -a --delete "$src/images/" "$dst/images/"
 
 cd "$dst"
 git add -A
